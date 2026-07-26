@@ -4,7 +4,7 @@ public:
         int n = nums.size();
         int i = 0;
         int j = 0;
-       long long currentSum = 0;
+        long long currentSum = 0;
         long long result = 0;
         unordered_set<int> st;
         while (j < n) {
