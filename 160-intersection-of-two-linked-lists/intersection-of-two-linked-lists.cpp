@@ -9,21 +9,20 @@
 class Solution {
 public:
     ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
-        unordered_set<ListNode*> st;
-        // List A ke saare nodes store karenge
-        ListNode* temp = headA;
-        while (temp != NULL) {
-            st.insert(temp);
-            temp = temp->next;
+        if (headA == NULL || headB == NULL)
+            return NULL;
+        ListNode* temp1 = headA;
+        ListNode* temp2 = headB;
+        while (temp1 != temp2) {
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+            if (temp1 == temp2)
+                return temp1;
+            if (temp1 == NULL)
+                temp1 = headB;
+            if (temp2 == NULL)
+                temp2 = headA;
         }
-        // List B ke nodes check karenege
-        temp = headB;
-        while (temp != NULL) {
-            if (st.find(temp) != st.end()) {
-                return temp;
-            }
-            temp = temp->next;
-        }
-        return NULL;
+        return temp1;
     }
 };
